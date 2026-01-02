@@ -1,139 +1,16 @@
 {
   "basic": {
-    "name": "张三",
-    "title": "研究员 / 博士生",
-    "avatar": "avatar.jpg",
-    "email": "example@university.edu",
-    "phone": "+86 123-4567-8901",
-    "location": "中国，北京",
-    "bio": "这里写一段简短的个人介绍。可以包括研究方向、兴趣爱好等。"
+    "name_en": "Seven Ding",
+    "name_zh": "丁嘉乐",
+    "title": "Undergraduate Student at Fudan University",
+    "avatar": "assets/images/avatar.jpg",
+    "email": "22307140024@m.fudan.edu.cn",
+    "location": "Shanghai, China",
+    "introduction": "Hi there, welcome to my personal place! Besides checking my 📑biography and ⚙️projects, you can also see my ☀️🌙insights and ideas (which might be unrestrained...) here. Feel free to reach out via email!"
   },
   
   "social": {
-    "github": "https://github.com/yourusername",
-    "scholar": "https://scholar.google.com/citations?user=YOUR_ID",
-    "linkedin": "https://linkedin.com/in/yourprofile",
-    "twitter": "https://twitter.com/yourusername",
-    "researchgate": "https://www.researchgate.net/profile/Your_Name"
-  },
-  
-  "education": [
-    {
-      "degree": "博士",
-      "major": "计算机科学",
-      "school": "某某大学",
-      "location": "北京，中国",
-      "period": "2020 - 至今",
-      "description": "研究方向：强化学习、深度学习"
-    },
-    {
-      "degree": "硕士",
-      "major": "人工智能",
-      "school": "某某大学",
-      "location": "上海，中国",
-      "period": "2018 - 2020",
-      "description": "GPA: 3.8/4.0"
-    }
-  ],
-  
-  "research": {
-    "interests": [
-      "强化学习",
-      "深度学习",
-      "多智能体系统",
-      "机器人控制"
-    ],
-    "keywords": [
-      "Reinforcement Learning",
-      "Deep Learning",
-      "Multi-Agent Systems",
-      "Robotics"
-    ]
-  },
-  
-  "publications": [
-    {
-      "title": "论文标题 1",
-      "authors": "作者1, 作者2, 作者3",
-      "venue": "会议/期刊名称",
-      "year": "2024",
-      "type": "conference",
-      "links": {
-        "paper": "https://arxiv.org/abs/xxx",
-        "code": "https://github.com/xxx/xxx",
-        "slides": "slides.pdf"
-      },
-      "awards": "Best Paper Award"
-    },
-    {
-      "title": "论文标题 2",
-      "authors": "作者1, 作者2",
-      "venue": "期刊名称",
-      "year": "2023",
-      "type": "journal",
-      "links": {
-        "paper": "https://doi.org/xxx"
-      }
-    }
-  ],
-  
-  "projects": [
-    {
-      "name": "项目名称 1",
-      "description": "项目简介，描述项目的主要内容和技术栈",
-      "period": "2024.01 - 2024.06",
-      "tags": ["Python", "PyTorch", "强化学习"],
-      "links": {
-        "github": "https://github.com/xxx/project1",
-        "demo": "https://demo.xxx.com"
-      },
-      "highlights": [
-        "实现了某某算法",
-        "性能提升了 20%",
-        "开源项目，获得 100+ stars"
-      ]
-    }
-  ],
-  
-  "experience": [
-    {
-      "position": "研究实习生",
-      "company": "某某公司/实验室",
-      "location": "北京，中国",
-      "period": "2023.06 - 2023.09",
-      "description": "主要工作内容和成果",
-      "achievements": [
-        "完成了某某项目",
-        "发表了一篇论文"
-      ]
-    }
-  ],
-  
-  "skills": {
-    "programming": ["Python", "C++", "JavaScript", "MATLAB"],
-    "frameworks": ["PyTorch", "TensorFlow", "Gym", "ROS"],
-    "tools": ["Git", "Docker", "Linux", "LaTeX"],
-    "languages": ["中文（母语）", "英语（流利）"]
-  },
-  
-  "awards": [
-    {
-      "title": "国家奖学金",
-      "date": "2023",
-      "issuer": "教育部"
-    },
-    {
-      "title": "优秀学生",
-      "date": "2022",
-      "issuer": "某某大学"
-    }
-  ],
-  
-  "theme": {
-    "primaryColor": "#2c3e50",
-    "accentColor": "#3498db",
-    "backgroundColor": "#ffffff",
-    "textColor": "#333333",
-    "font": "system-ui, -apple-system, sans-serif"
+    "github": "https://github.com/seven-7-ding",
+    "scholar": "https://scholar.google.com/citations?user=zBR5Qk4AAAAJ&hl"
   }
 }
