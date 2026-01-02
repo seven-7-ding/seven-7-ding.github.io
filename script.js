@@ -74,7 +74,7 @@ function renderNav() {
     }
     
     // Add separator line after navigation buttons
-    navHTML += `<hr class="nav-separator">`;
+    navHTML += `<hr class="nav-seperator">`;
     
     nav.innerHTML = navHTML;
     

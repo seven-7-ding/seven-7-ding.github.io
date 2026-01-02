@@ -23,7 +23,6 @@ body {
     border: none;
     background-color: #fff;
     cursor: pointer;
-    border-radius: 5px;
     display: inline-block;
     color: rgb(122, 121, 121);
     font-weight: bold;
@@ -36,9 +35,9 @@ body {
 
 .nav-seperator {
     border: none;
-    border-top: 2px solid #000000;
+    border-top: 1px solid #000000;
     width: 100%;
-    margin: 1rem 0;
+    margin: 3px 0;
 }
 
 /* Left sidebar - fixed at 30% width */
