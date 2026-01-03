@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         await loadProfile();
         
         renderPage();
-
-        initEventListeners();
         
         console.log('Finished initializing page.');
     } catch (error) {
@@ -27,7 +25,10 @@ document.addEventListener('DOMContentLoaded', async () => {
  */
 async function loadProfile() {
     try {
-        const response = await fetch('profile.json');
+        // Add timestamp to prevent caching
+        const response = await fetch(`profile.json?v=${new Date().getTime()}`, {
+            cache: 'no-cache'
+        });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -118,7 +119,7 @@ function renderContent() {
     
     switch(currentPage) {
         case 'aboutme':
-            main.innerHTML = '<h2>About Me</h2><p>About me content goes here.</p>';
+            renderAboutMe();
             break;
         case 'projects':
             main.innerHTML = '<h2>Projects</h2><p>Projects content goes here.</p>';
@@ -129,4 +130,36 @@ function renderContent() {
         default:
             main.innerHTML = '<p>Page not found</p>';
     }
+}
+
+// Functions for the content places.
+
+function renderAboutMe() {
+    const main = document.getElementById('main');
+
+    fetch('assets/htmls/aboutme.html')
+        .then(response => response.text())
+        .then(html => {
+            main.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Failed to load aboutme.html:', error);
+            main.innerHTML = '<p>Failed to load content.</p>';
+        });
+}
+
+/**
+ * Show error message to user
+ */
+function showError(message) {
+    const app = document.getElementById('app');
+    if (app) {
+        app.innerHTML = `
+            <div style="padding: 20px; text-align: center; color: #d32f2f;">
+                <h2>Error</h2>
+                <p>${message}</p>
+            </div>
+        `;
+    }
+    console.error(message);
 }
