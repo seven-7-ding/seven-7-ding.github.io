@@ -1,5 +1,5 @@
 let profileData = null;
-let currentPage = 'aboutme';
+let currentPage = 'projects';
 
 const pages = {
     'aboutme': 'About Me',

@@ -98,7 +98,7 @@ body {
 
 /* Project images */
 .project-image {
-    max-width: 500px;
+    max-width: 300px;
     width: 100%;
     height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -109,6 +109,25 @@ body {
     border: none;
     border-top: 2px dotted #afafaf;
     margin: 2rem 0;
+}
+
+/* Project flex container */
+.project-flex-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Project image in flex layout - fixed width */
+.project-image-fixed {
+    flex: 0 0 300px;
+    max-width: 300px;
+}
+
+/* Project content area in flex layout */
+.project-content {
+    flex: 1;
 }
 
 
