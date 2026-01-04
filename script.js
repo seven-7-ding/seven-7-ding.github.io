@@ -99,7 +99,7 @@ function renderSidebar() {
     };
     sidebar.innerHTML = `
         <div class="profile-section">
-            <img src="${profileData.basic.avatar}" alt="Avatar" class="avatar">
+            <img src="${profileData.basic.avatar}?v=${new Date().getTime()}" alt="Avatar" class="avatar">
             <h3 class="name">${profileData.basic.name_en}</h3>
             <p class="name">${profileData.basic.name_zh}</p>
             <p class="title">${profileData.basic.title}</p>
