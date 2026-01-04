@@ -1,5 +1,5 @@
 let profileData = null;
-let currentPage = 'aboutme';
+let currentPage = 'projects';
 
 const pages = {
     'aboutme': 'About Me',
@@ -122,7 +122,7 @@ function renderContent() {
             renderAboutMe();
             break;
         case 'projects':
-            main.innerHTML = '<h2>Projects</h2><p>Projects content goes here.</p>';
+            renderProjects();
             break;
         case 'insights_and_ideas':
             main.innerHTML = '<h2>Insights & Ideas</h2><p>Insights & Ideas content goes here.</p>';
@@ -144,6 +144,20 @@ function renderAboutMe() {
         })
         .catch(error => {
             console.error('Failed to load aboutme.html:', error);
+            main.innerHTML = '<p>Failed to load content.</p>';
+        });
+}
+
+function renderProjects() {
+    const main = document.getElementById('main');
+
+    fetch('assets/htmls/projects.html')
+        .then(response => response.text())
+        .then(html => {
+            main.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Failed to load projects.html:', error);
             main.innerHTML = '<p>Failed to load content.</p>';
         });
 }

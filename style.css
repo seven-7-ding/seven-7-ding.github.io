@@ -70,5 +70,46 @@ body {
     overflow-y: auto;
 }
 
+/* Projects Page Styles */
+
+/* Project title link */
+.project-title {
+    color: #000000;
+    text-decoration: underline;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Author information */
+.project-author {
+    color: #575757;
+}
+
+/* Conference/venue information */
+.project-venue {
+    color: #575757;
+    font-style: italic;
+}
+
+/* PDF and other resource links */
+.resource-link {
+    color: #000000;
+}
+
+/* Project images */
+.project-image {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Project Divider */
+.project-divider {
+    border: none;
+    border-top: 2px dotted #afafaf;
+    margin: 2rem 0;
+}
+
 
 
