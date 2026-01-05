@@ -1,12 +1,80 @@
+/* CSS Variables for Theme */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-nav-active: rgba(217, 217, 217, 0.833);
+    --text-primary: #000000;
+    --text-secondary: #555555;
+    --text-tertiary: #575757;
+    --text-inactive: rgb(122, 121, 121);
+    --border-color: #000000;
+    --divider-color: #afafaf;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --shadow-text: rgba(0, 0, 0, 0.3);
+    --link-color: #000000;
+    --link-hover: #313131;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --bg-nav-active: rgba(60, 60, 60, 0.833);
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #a0a0a0;
+    --text-inactive: rgb(160, 160, 160);
+    --border-color: #505050;
+    --divider-color: #505050;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --shadow-text: rgba(0, 0, 0, 0.6);
+    --link-color: #ffffff;
+    --link-hover: #bdbec0;
+}
+
 /* Global styles */
 * {
-    font-family: 'Georgia', serif!important;
+    font-family: 'Georgia', serif;
 }
 
 body {
-    font-family: 'Georgia', serif!important;
+    font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.link {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.link a {
+    color: var(--link-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.link a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.in-text-link {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.in-text-link:hover {
+    color: var(--text-tertiary);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 /* Main container with left-right layout */
@@ -17,35 +85,73 @@ body {
 }
 
 /* Navigation bar styling */
+.nav-bar {
+    position: relative;
+    background-color: var(--bg-primary);
+}
+
 .nav-btn {
     margin: 0 0.5rem;
     padding: 0.8rem 1.5rem;
     border: none;
-    background-color: #fff;
+    background-color: var(--bg-primary);
     cursor: pointer;
     display: inline-block;
-    color: rgb(122, 121, 121);
+    color: var(--text-inactive);
     font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--bg-nav-active);
+    color: var(--text-primary);
 }
 
 .nav-btn.active {
-    background-color: rgba(217, 217, 217, 0.833);
-    color: rgb(0, 0, 0);
+    background-color: var(--bg-nav-active);
+    color: var(--text-primary);
 }
 
 .nav-seperator {
     border: none;
-    border-top: 1px solid #000000;
+    border-top: 1px solid var(--border-color);
     width: 100%;
-    margin: 3px 0;
+    margin: 5px 0;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
 }
 
 /* Left sidebar - fixed at 30% width */
 .sidebar {
     width: 200px;
     padding: 2rem;
-    background-color: #fafafa;
+    background-color: var(--bg-secondary);
     overflow-y: auto;
+    transition: background-color 0.3s ease;
 }
 
 .avatar {
@@ -53,47 +159,92 @@ body {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(0, 0, 0, 0.833);
+    border: 3px solid var(--border-color);
+    transition: border-color 0.3s ease;
 }
 
-.title {
-    font-size: 1.2rem;
-    color: #555;
-    margin-top: 0.5rem;
+/* Profile Section Styles */
+.profile-section {
+    text-align: center;
+    padding: 1rem 0;
 }
 
+.profile-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.profile-name-zh {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0.3rem 0;
+    transition: color 0.3s ease;
+}
+
+.profile-title {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.profile-introduction {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 1rem 0;
+    padding: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.profile-location {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    margin: 0.5rem 0;
+    transition: color 0.3s ease;
+}
 
 /* Right content area - 65% width */
 .content-area {
-    width: 65%;
+    width: 75%;
     padding: 2rem;
     overflow-y: auto;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
 }
 
 /* Projects Page Styles */
 
 /* Project title link */
 .project-title {
-    color: #000000;
+    color: var(--text-primary);
     text-decoration: underline;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px var(--shadow-text);
+    transition: color 0.3s ease;
+}
+
+.project-title:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 /* Author information */
 .project-author {
-    color: #575757;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 /* Conference/venue information */
 .project-venue {
-    color: #575757;
+    color: var(--text-secondary);
     font-style: italic;
-}
-
-/* PDF and other resource links */
-.resource-link {
-    color: #000000;
+    transition: color 0.3s ease;
 }
 
 /* Project images */
@@ -101,14 +252,16 @@ body {
     max-width: 300px;
     width: 100%;
     height: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: box-shadow 0.3s ease;
 }
 
 /* Project Divider */
 .project-divider {
     border: none;
-    border-top: 2px dotted #afafaf;
+    border-top: 2px dotted var(--divider-color);
     margin: 2rem 0;
+    transition: border-color 0.3s ease;
 }
 
 /* Project flex container */
@@ -128,6 +281,33 @@ body {
 /* Project content area in flex layout */
 .project-content {
     flex: 1;
+}
+
+/* About Me Page Styles */
+
+/* Section heading style */
+.aboutme-section-title {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1.5rem 0 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+/* Biography item with advisor link */
+.bio-item-right {
+    float: right;
+}
+
+.bio-item-right .link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.bio-item-right .link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
 }
 
 
