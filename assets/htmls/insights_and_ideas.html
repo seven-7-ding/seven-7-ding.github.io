@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Include marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../../script.js"></script>
+</head>
+<body>
+    <div class="blog-viewer-container">
+        <div class="blog-nav">
+            <a href="../../index.html" class="back-button">← Back to Insights</a>
+            <button class="theme-toggle" id="themeToggle"></button>
+        </div>
+        <div id="blogContent" class="loading">Loading blog post...</div>
+    </div>
+
+    <script>
+        // Load theme preference and initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                isDarkTheme = true;
+                document.body.classList.add('dark-theme');
+            }
+            
+            // Update theme button
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.innerHTML = isDarkTheme 
+                    ? '<img src="../images/icon-light.png" alt="Light" style="width: 20px; height: 20px;">' 
+                    : '<img src="../images/icon-dark.png" alt="Dark" style="width: 20px; height: 20px;">';
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+            
+            // Load blog post
+            initBlogViewer();
+        });
+    </script>
+</body>
+</html>

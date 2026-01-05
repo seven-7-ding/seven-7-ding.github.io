@@ -1,6 +1,8 @@
 let profileData = null;
-let currentPage = 'aboutme';
+let currentPage = 'insights_and_ideas';
 let isDarkTheme = false;
+let blogsData = null;
+let selectedTags = new Set();
 
 const pages = {
     'aboutme': 'About Me',
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         await loadProfile();
+        await loadBlogs();
         
         renderPage();
         
@@ -45,6 +48,53 @@ async function loadProfile() {
     } catch (error) {
         console.error('Failed to load profile data due to: ', error);
         throw error;
+    }
+}
+
+/**
+ * Load blogs data by scanning blog directories
+ */
+async function loadBlogs() {
+    try {
+        // Load blog index file
+        const indexResponse = await fetch(`assets/blogs/index.json?v=${new Date().getTime()}`, {
+            cache: 'no-cache'
+        });
+        
+        if (!indexResponse.ok) {
+            console.error('Failed to load blog index');
+            blogsData = { blogs: [] };
+            return;
+        }
+        
+        const indexData = await indexResponse.json();
+        const blogDirs = indexData.directories || [];
+        
+        console.log(`Found ${blogDirs.length} blog directories`);
+
+        const blogs = [];
+        
+        for (const dir of blogDirs) {
+            try {
+                const response = await fetch(`${dir}/metadata.json?v=${new Date().getTime()}`, {
+                    cache: 'no-cache'
+                });
+                if (response.ok) {
+                    const metadata = await response.json();
+                    // Add contentPath to metadata
+                    metadata.contentPath = `${dir}/content.md`;
+                    blogs.push(metadata);
+                }
+            } catch (error) {
+                console.warn(`Failed to load metadata for ${dir}:`, error);
+            }
+        }
+
+        blogsData = { blogs };
+        console.log('Successfully loaded blogs data:', blogsData);
+    } catch (error) {
+        console.error('Failed to load blogs data due to: ', error);
+        blogsData = { blogs: [] };
     }
 }
 
@@ -78,8 +128,8 @@ function renderNav() {
     let navHTML = '';
     
     // Add theme toggle button
-    const themeIcon = isDarkTheme ? '☀️' : '🌙';
-    navHTML += `<button class="theme-toggle" id="themeToggle" title="Toggle theme">${themeIcon}</button>`;
+    const themeIcon = isDarkTheme ? '<img src="assets/images/icon-light.png" alt="Light" style="width: 20px; height: 20px;">' : '<img src="assets/images/icon-dark.png" alt="Dark" style="width: 20px; height: 20px;">';
+    navHTML += `<button class="theme-toggle" id="themeToggle">${themeIcon}</button>`;
     
     for (const [key, label] of Object.entries(pages)) {
         const activeClass = key === currentPage ? 'active' : '';
@@ -141,7 +191,7 @@ function renderContent() {
             renderProjects();
             break;
         case 'insights_and_ideas':
-            main.innerHTML = '<h2>Insights & Ideas</h2><p>Insights & Ideas content goes here.</p>';
+            renderInsightsAndIdeas();
             break;
         default:
             main.innerHTML = '<p>Page not found</p>';
@@ -178,6 +228,112 @@ function renderProjects() {
         });
 }
 
+function renderInsightsAndIdeas() {
+    const main = document.getElementById('main');
+
+    if (!blogsData || !blogsData.blogs) {
+        main.innerHTML = '<p>Loading blogs...</p>';
+        return;
+    }
+
+    // Get all unique tags
+    const allTags = new Set();
+    blogsData.blogs.forEach(blog => {
+        blog.tags.forEach(tag => allTags.add(tag));
+    });
+
+    // Generate tag filter HTML
+    let tagFilterHTML = '<div class="tag-filter-container">';
+    allTags.forEach(tag => {
+        const activeClass = selectedTags.has(tag) ? 'active' : '';
+        tagFilterHTML += `<button class="tag-button ${activeClass}" data-tag="${tag}">${tag}</button>`;
+    });
+    tagFilterHTML += '<button class="clear-tags-button" id="clearTags">Clear All</button>';
+    tagFilterHTML += '</div>';
+
+    // Filter blogs based on selected tags
+    let filteredBlogs = blogsData.blogs;
+    if (selectedTags.size > 0) {
+        filteredBlogs = blogsData.blogs.filter(blog => 
+            blog.tags.some(tag => selectedTags.has(tag))
+        );
+    }
+
+    // Sort blogs by date (newest first)
+    filteredBlogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Generate blog cards HTML
+    let blogCardsHTML = '<div class="blog-cards-container">';
+    if (filteredBlogs.length === 0) {
+        blogCardsHTML += '<p>No blogs found with the selected tags.</p>';
+    } else {
+        filteredBlogs.forEach(blog => {
+            const tagsHTML = blog.tags.map(tag => 
+                `<span class="blog-card-tag">${tag}</span>`
+            ).join('');
+            const emoji = blog.emoji || '📅';
+            
+            blogCardsHTML += `
+                <div class="blog-card" data-blog-id="${blog.id}">
+                    <div class="blog-card-date">${emoji} ${blog.date}</div>
+                    <div class="blog-card-title">${blog.title}</div>
+                    <div class="blog-card-description">${blog.description}</div>
+                    <div class="blog-card-tags">${tagsHTML}</div>
+                </div>
+            `;
+        });
+    }
+    blogCardsHTML += '</div>';
+
+    // Combine intro, tags, and blog cards
+    main.innerHTML = `
+        <p class="blog-intro">At the end of 2025, I reflected on my journey in the past year. As usual, I found myself underwent impressive experiences, met distinct people, and gained novel insights for my life. I accomplished the first research work independently, and attended the first international AI conference, with the help of Prof. Ma (words really failed me to express my thankfulness to him🥹). I was lucky enough to meet Prof. Ling Pan and got her offer. I ...</p>
+        
+        <p>"Seven, then what is the most important turing point for you that happened in 2025?" I asked myself, anticipating myself to say "well, I can hardly say A is more important than B since they are all crucial for me".</p>
+        
+        <p>However, surprisingly, something clicked in my mind. Actually, for me, 2025 was the year that I started to "connect myself with the world" after I finally "found and defined 'me' for myself". I refer to "connecting with the world" as the process of awarely learning about the external world, and actively do something for people around me. I became interested in social issues, the priciples behind phenomena, and what I can do to make a difference, even just for a tiny space around me.</p>
+
+        <p>Then, what can I do?</p>
+        
+        <a class="in-text-link" href="https://lilianweng.github.io/">Lilian Weng's blog</a>
+        ${tagFilterHTML}
+        ${blogCardsHTML}
+    `;
+
+    // Add event listeners to tag buttons
+    document.querySelectorAll('.tag-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tag = btn.dataset.tag;
+            if (selectedTags.has(tag)) {
+                selectedTags.delete(tag);
+            } else {
+                selectedTags.add(tag);
+            }
+            renderInsightsAndIdeas();
+        });
+    });
+
+    // Add event listener to clear all button
+    const clearBtn = document.getElementById('clearTags');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            selectedTags.clear();
+            renderInsightsAndIdeas();
+        });
+    }
+
+    // Add event listeners to blog cards
+    document.querySelectorAll('.blog-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const blogId = card.dataset.blogId;
+            const blog = blogsData.blogs.find(b => b.id === blogId);
+            if (blog) {
+                window.location.href = `assets/htmls/insights_and_ideas.html?id=${blogId}`;
+            }
+        });
+    });
+}
+
 /**
  * Show error message to user
  */
@@ -204,11 +360,102 @@ function toggleTheme() {
     // Update theme toggle button icon
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
-        themeToggle.textContent = isDarkTheme ? '☀️' : '🌙';
+        // Detect the correct path based on current page location
+        const isSubPage = window.location.pathname.includes('/assets/htmls/');
+        const imagePath = isSubPage ? '../images/' : 'assets/images/';
+        
+        themeToggle.innerHTML = isDarkTheme 
+            ? `<img src="${imagePath}icon-light.png" alt="Light" style="width: 20px; height: 20px;">` 
+            : `<img src="${imagePath}icon-dark.png" alt="Dark" style="width: 20px; height: 20px;">`;
     }
     
     // Save theme preference to localStorage
     localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
     
     console.log(`Theme switched to: ${isDarkTheme ? 'dark' : 'light'}`);
+}
+
+/**
+ * Blog viewer functions
+ */
+function initBlogViewer() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = urlParams.get('id');
+    
+    if (!blogId) {
+        document.getElementById('blogContent').innerHTML = '<div class="error">Blog ID not specified.</div>';
+        return;
+    }
+    
+    loadBlogPost(blogId);
+}
+
+async function loadBlogPost(blogId) {
+    try {
+        // Use absolute path from root to avoid relative path issues
+        const indexResponse = await fetch(`../../assets/blogs/index.json?v=${new Date().getTime()}`);
+        if (!indexResponse.ok) {
+            throw new Error('Failed to load blog index');
+        }
+        
+        const indexData = await indexResponse.json();
+        const blogDirs = indexData.directories || [];
+        
+        let blog = null;
+        let blogDir = null;
+        
+        for (const dir of blogDirs) {
+            try {
+                // Adjust path for subdirectory location
+                const metadataPath = `../../${dir}/metadata.json`;
+                const response = await fetch(`${metadataPath}?v=${new Date().getTime()}`);
+                if (response.ok) {
+                    const metadata = await response.json();
+                    if (metadata.id === blogId) {
+                        blog = metadata;
+                        blogDir = dir;
+                        break;
+                    }
+                }
+            } catch (error) {
+                console.warn(`Failed to check ${dir}:`, error);
+            }
+        }
+        
+        if (!blog) {
+            document.getElementById('blogContent').innerHTML = '<div class="error">Blog post not found.</div>';
+            return;
+        }
+        
+        // Load blog content with adjusted path
+        const contentResponse = await fetch(`../../${blogDir}/content.md`);
+        if (!contentResponse.ok) throw new Error('Failed to load blog content');
+        const markdownContent = await contentResponse.text();
+        
+        // Parse markdown to HTML using marked.js
+        const htmlContent = marked.parse(markdownContent);
+        
+        // Generate tags HTML
+        const tagsHTML = blog.tags.map(tag => 
+            `<span class="blog-tag-display">${tag}</span>`
+        ).join('');
+        const emoji = blog.emoji || '📅';
+        
+        // Render blog post
+        document.getElementById('blogContent').innerHTML = `
+            <div class="blog-header">
+                <h1 class="blog-title">${blog.title}</h1>
+                <div class="blog-meta">
+                    <span>${emoji} ${blog.date}</span>
+                </div>
+                <div class="blog-tags-display">${tagsHTML}</div>
+            </div>
+            <div class="blog-content">${htmlContent}</div>
+        `;
+        
+    } catch (error) {
+        console.error('Error loading blog post:', error);
+        document.getElementById('blogContent').innerHTML = 
+            '<div class="error">Failed to load blog post. Please try again later.</div>';
+    }
 }
