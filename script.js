@@ -287,15 +287,12 @@ function renderInsightsAndIdeas() {
 
     // Combine intro, tags, and blog cards
     main.innerHTML = `
-        <p class="blog-intro">At the end of 2025, I reflected on my journey in the past year. As usual, I found myself underwent impressive experiences, met distinct people, and gained novel insights for my life. I accomplished the first research work independently, and attended the first international AI conference, with the help of Prof. Ma (words really failed me to express my thankfulness to him🥹). I was lucky enough to meet Prof. Ling Pan and got her offer. I ...</p>
-        
-        <p>"Seven, then what is the most important turing point for you that happened in 2025?" I asked myself, anticipating myself to say "well, I can hardly say A is more important than B since they are all crucial for me".</p>
-        
-        <p>However, surprisingly, something clicked in my mind. Actually, for me, 2025 was the year that I started to "connect myself with the world" after I finally "found and defined 'me' for myself". I refer to "connecting with the world" as the process of awarely learning about the external world, and actively do something for people around me. I became interested in social issues, the priciples behind phenomena, and what I can do to make a difference, even just for a tiny space around me.</p>
-
-        <p>Then, what can I do?</p>
-        
-        <a class="in-text-link" href="https://lilianweng.github.io/">Lilian Weng's blog</a>
+        <p class="blog-intro">Aha, you've finally found my blog section here!🥂 This blog started at the beginning of 2026 (2026-01-05 actually), and I'm putting this out here that I shall keep updating my blogs at least once a week, unless special circumstances arise (e.g. going on a trip). Enjoy reading!🍉</p>
+        <p class="blog-intro">If this is your first time here and you don't know much about me, I recommend starting with
+<a class="in-text-link" href="assets/htmls/insights_and_ideas.html?id=2026-1-6-finally_i_decided_to_connect_with_the_world">this article</a>,
+which explains the general thoughts and motivations behind my blogging.</p>
+        <p class="blog-intro-signature">Seven Ding</p>
+        <p class="blog-intro-signature">2026-01-06</p>
         ${tagFilterHTML}
         ${blogCardsHTML}
     `;
