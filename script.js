@@ -1,5 +1,5 @@
 let profileData = null;
-let currentPage = 'insights_and_ideas';
+let currentPage = 'aboutme';
 let isDarkTheme = false;
 let blogsData = null;
 let selectedTags = new Set();
