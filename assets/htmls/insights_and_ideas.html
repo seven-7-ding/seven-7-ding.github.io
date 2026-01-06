@@ -36,6 +36,14 @@
                 themeToggle.addEventListener('click', toggleTheme);
             }
             
+            // Update back button URL with page parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromPage = urlParams.get('from') || 'insights_and_ideas';
+            const backButton = document.querySelector('.back-button');
+            if (backButton) {
+                backButton.href = `../../index.html?page=${fromPage}`;
+            }
+            
             // Load blog post
             initBlogViewer();
         });

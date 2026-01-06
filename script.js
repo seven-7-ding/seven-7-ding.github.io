@@ -12,6 +12,13 @@ const pages = {
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        // Check URL parameters for page navigation
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageParam = urlParams.get('page');
+        if (pageParam && pages[pageParam]) {
+            currentPage = pageParam;
+        }
+        
         // Load saved theme preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
@@ -325,7 +332,7 @@ which explains the general thoughts and motivations behind my blogging.</p>
             const blogId = card.dataset.blogId;
             const blog = blogsData.blogs.find(b => b.id === blogId);
             if (blog) {
-                window.location.href = `assets/htmls/insights_and_ideas.html?id=${blogId}`;
+                window.location.href = `assets/htmls/insights_and_ideas.html?id=${blogId}&from=${currentPage}`;
             }
         });
     });
