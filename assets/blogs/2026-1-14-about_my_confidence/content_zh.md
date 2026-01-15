@@ -1,4 +1,4 @@
-<!-- # 自信与坦诚 -->
+<!-- # 俺的自信与坦诚 -->
 
 ## 我其实没那么自信……🫥
 
@@ -64,7 +64,7 @@
 
 <h2 style="text-align: center;">对自己坦诚一点！💪</h2>
 
-**延伸阅读**
+**延伸**
 
 1. 参见欧文·戈夫曼（Erving Goffman）提出的 <a href="https://monoskop.org/File:Goffman_Erving_The_Presentation_of_Self_in_Everyday_Life.pdf">自我呈现（Presentation of Self）</a> 理论。
 

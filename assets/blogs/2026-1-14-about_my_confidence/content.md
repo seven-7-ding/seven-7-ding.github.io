@@ -59,7 +59,7 @@ To this end, if I get unconfortable for my lack of confidence, such as feeling n
 
 After being frank to myself, I can make my choice more easily. Moreover, I'm much less overwhelmed between "I shall know it" and "I'm not so interested in it", which offer me decisive actions and free life.
 
-> On the contrary, I extremely crave for experiences in life, decisive actions, and going all out. (Hermann Hesse, *Steppenwolf*)
+> But what I needed was not knowledge and understanding. What I longed for in my despair was life and resolution, action and reaction, impulse and impetus. (*Steppenwolf* by Hermann Hesse, translated by Basil Creighton)
 
 <h2 style="text-align: center;">Now, please be frank to yourself!💪</h2>
 
