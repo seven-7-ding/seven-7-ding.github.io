@@ -30,9 +30,11 @@ And it is even worse when other people know much more than we do about topics th
 
 > The contract between ourselves and others for smooth communication.
 
-If I try to look deeper into this, I'd like to summarize the reason for our pursuing confidence as the **consistency and alignment between "what I'm supposed to know" and "what I really know".** I pursue such consistency in my inner mind, even when not talking with another person, because I'll naturally imagine the potential interactions with others (anticipatory anxiety); and in both anticipatory and real interactions, I try to maintain the consistency of my <u>**Self-Presentation**</u>. 
+If I try to look deeper into this, I'd like to summarize the reason for our pursuing confidence as the **consistency and alignment between "what I'm supposed to know" and "what I really know".** I pursue such consistency in my inner mind, even when not talking with another person, because I'll naturally imagine the potential interactions with others (anticipatory anxiety); and in both anticipatory and real interactions, I try to maintain the consistency of my <u>**Self-Presentation**</u>. (I think further analysis is not needed as you can understand this literally)
 
-Further, The last point, consistent self-presentation, could be attributed to the two-way contract between ourselves and others, that we want to keep the communication smooth and avoid awkward situations.
+Further, consistent self-presentation could be attributed to the two-way contract between ourselves and others, that we want to keep the communication smooth and avoid awkward situations, at least on the surface.
+
+> 🔗*Please refer to <a href="https://monoskop.org/File:Goffman_Erving_The_Presentation_of_Self_in_Everyday_Life.pdf">Presentation of Self</a> theory proposed by Erving Goffman!* And I think that this topic worth further discussions.
 
 So, in short, the reasons are:
 
@@ -40,9 +42,6 @@ So, in short, the reasons are:
 want fluent conversation ↔ want consistent self-presentation</h3>
 <h3 style="text-align: center;"> ⇒ want consistency between ``what I'm supposed to know" and ``what I really know"</h3>
 <h3 style="text-align: center;"> ⇒ want confidence</h3>
-
-
-🔗*Please refer to <a href="https://monoskop.org/File:Goffman_Erving_The_Presentation_of_Self_in_Everyday_Life.pdf">Presentation of Self</a> theory proposed by Erving Goffman!* And I think that this topic worth further discussions.
 
 ## After we know the reasons...
 
@@ -58,7 +57,9 @@ To this end, if I get unconfortable for my lack of confidence, such as feeling n
 
 * Am I really interested in this topic, or does this topic brings me spiritual/material benefits?
 
-After being frank to myself, I can make my choice more easily. Moreover, I'm much less overwhelmed between "I shall know it" and "I'm not so interested in it".
+After being frank to myself, I can make my choice more easily. Moreover, I'm much less overwhelmed between "I shall know it" and "I'm not so interested in it", which offer me decisive actions and free life.
+
+> On the contrary, I extremely crave for experiences in life, decisive actions, and going all out. (Hermann Hesse, *Steppenwolf*)
 
 <h2 style="text-align: center;">Now, please be frank to yourself!💪</h2>
 
