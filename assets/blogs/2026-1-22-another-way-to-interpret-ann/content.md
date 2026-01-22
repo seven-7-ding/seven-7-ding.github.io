@@ -42,15 +42,19 @@ Mathematically, treat a neural network as a directed graph $G=(V,E)$, where $V$ 
 
 Firstly, we represent the states of all neurons as a vector $h_t \in \mathbb{R}^N$ at time step $t$.
 
-In the next time step, the neurons decide their outputs via an activation function $f_t$, resulting in an activation vector 
+In the next time step, the neurons decide their outputs via an activation function $\delta_t$, resulting in an activation vector 
 
-$$a_t = f_t(h_t).$$
+$$a_t = \delta_t(h_t).$$
 
 Then, the outputs are transmitted through the connections, and incorporated using weighted sums. This process can be represented as 
 
-$$h_{t+1} = A_t a_t=A_t f_t(h_t),$$
+$$h_{t+1} = A_t a_t=A_t \delta_t(h_t),$$
 
 where $A_t \in \mathbb{R}^{N \times N}$ is the weighted adjacency matrix of the graph $G$ at time step $t$. This process will be repeated for several time steps, corresponding to multiple layers in FCN, or information passing in CNN/FCN, or time steps in RNN.
+
+<a href="..\blogs\2026-1-22-another-way-to-interpret-ann/image_1.jpg" target="_blank">
+    <img src="..\blogs\2026-1-22-another-way-to-interpret-ann/image_1.jpg" alt="ANN Interpretation" style="display: block; margin: 10px auto;" />
+</a>
 
 🌟Finally, the states of the neurons are updated based on the received inputs and possibly their previous states. A common update rule is given by backpropagation:
 
@@ -63,7 +67,7 @@ where $L$ is the loss function, and $\eta$ is the learning rate.
 **In short, ANN mimics biological neural networks through the following formulations:**
 
 $$
-\text{Neuron state update via connections: } h_{t+1} = A_t f_t(h_t)
+\text{Neuron state update via connections: } h_{t+1} = A_t \delta_t(h_t)
 $$
 
 $$
@@ -79,6 +83,14 @@ As has been mentioned, ANNs simulate biological neural networks in a highly simp
 ANNs typically use <u>**gradient descent-based methods**</u> to update connection weights. This mechanism elgantly bridges the gap between past experiences and updates, and is computationally efficient.
 
 But this approach severely narrows the scope of possible update rules. In biological neural networks, synaptic connection updates are not only influenced by the relation between the final output and the considered synapse, but also by the states of neurons, the "weights" of neighboring synapses, ... These factors form a complex non-linear relationship that is difficult to capture with a deterministic mathematical formula.
+
+#### Biologically inspired "refreshing" mechanisms.
+
+Maintaining the learnability and adaptability of ANNs is broadly recognized as a challenge. It seems tempting to introduce new mechanisms inspired by biological processes to address this issue. For example, we can 
+
+- clean unnecessary connections periodically, which is represented by their <u>**relatively $\approx 0$ weights**</u> (existing methods includes <a href="https://arxiv.org/abs/2302.12902">ReDo</a>, which reset neurons with ~0 activations, and <a href="https://arxiv.org/abs/2505.24061">GraMa</a>, which reset connections with ~0 gradients);
+
+- create new connections based on certain rules.
 
 #### Time-aware encoding/decoding of signals.
 

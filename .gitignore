@@ -32,3 +32,4 @@ build/
 notes/
 drafts/
 *.draft.md
+*.pdf
