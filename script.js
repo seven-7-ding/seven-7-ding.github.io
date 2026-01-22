@@ -457,6 +457,17 @@ async function loadBlogPost(blogId) {
             <div class="blog-content">${htmlContent}</div>
         `;
         
+        // Render math formulas with KaTeX
+        if (typeof renderMathInElement !== 'undefined') {
+            renderMathInElement(document.getElementById('blogContent'), {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
+        
     } catch (error) {
         console.error('Error loading blog post:', error);
         document.getElementById('blogContent').innerHTML = 
