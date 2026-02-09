@@ -434,10 +434,35 @@ async function loadBlogPost(blogId) {
         // Load blog content with adjusted path
         const contentResponse = await fetch(`../../${blogDir}/content.md`);
         if (!contentResponse.ok) throw new Error('Failed to load blog content');
-        const markdownContent = await contentResponse.text();
+        let markdownContent = await contentResponse.text();
+        
+        // Protect math formulas from marked.js processing
+        const mathBlocks = [];
+        let mathIndex = 0;
+        
+        // Protect display math ($$...$$)
+        markdownContent = markdownContent.replace(/\$\$([\s\S]+?)\$\$/g, (match) => {
+            const placeholder = `MATHBLOCK${mathIndex}MATHBLOCK`;
+            mathBlocks[mathIndex] = match;
+            mathIndex++;
+            return placeholder;
+        });
+        
+        // Protect inline math ($...$)
+        markdownContent = markdownContent.replace(/\$([^\$\n]+?)\$/g, (match) => {
+            const placeholder = `MATHBLOCK${mathIndex}MATHBLOCK`;
+            mathBlocks[mathIndex] = match;
+            mathIndex++;
+            return placeholder;
+        });
         
         // Parse markdown to HTML using marked.js
-        const htmlContent = marked.parse(markdownContent);
+        let htmlContent = marked.parse(markdownContent);
+        
+        // Restore math formulas
+        htmlContent = htmlContent.replace(/MATHBLOCK(\d+)MATHBLOCK/g, (match, index) => {
+            return mathBlocks[parseInt(index)];
+        });
         
         // Generate tags HTML
         const tagsHTML = blog.tags.map(tag => 
@@ -457,16 +482,18 @@ async function loadBlogPost(blogId) {
             <div class="blog-content">${htmlContent}</div>
         `;
         
-        // Render math formulas with KaTeX
-        if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(document.getElementById('blogContent'), {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false}
-                ],
-                throwOnError: false
-            });
-        }
+        // Render math formulas with KaTeX after DOM is updated
+        setTimeout(() => {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.getElementById('blogContent'), {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }, 100);
         
     } catch (error) {
         console.error('Error loading blog post:', error);
