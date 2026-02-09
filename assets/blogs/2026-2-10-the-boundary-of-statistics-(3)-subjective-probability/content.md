@@ -10,7 +10,7 @@ The subjective probability interprets probability as ***the degree of belief***.
 
 > I'm willing to exange 0.5 dollar for the 0-1 gamble of a coin toss.
 
-The story begins with a simple scenario. Suppose there is a gamble that pays you 1 dollar if an event $F$ happens, and pays you 0 dollar otherwise. In your opinion, this gamble equals to $p$ determined dollars; in other words, you are willing to exchange $p$ dollar for this gamble. Then, we say that your degree of belief in event $F$ is $p$.
+The story begins with a simple scenario. Suppose there is a gamble that pays you 1 dollar if an event $F$ happens, and you get nothing otherwise. In your opinion, this gamble equals to $p$ determined dollars; in other words, you are willing to exchange $p$ dollar for this gamble. Then, we say that your degree of belief in event $F$ is $p$.
 
 Accordingly, we introduce **Dutch Book** to examine the rationality of subjective probability, which is a series of such bets. Others can buy or sell you bets at your quoted "prices" $p$.
 
