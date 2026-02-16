@@ -60,6 +60,10 @@ When the theorem holds, the probability defined above is unique for the agent.
     P(A|q(A)=x) = x,\forall A,x,
     $$ 
     where $q(A)$ is the expert's credence on event $A$. There are several special *experts* stemming from different perspective.
+    - **Principal Principle**: as a rational agent, if you know that there is an objective chance function $ch$, which assigns $ch(A)=x$ for event $A$, then your credence in $A$ should also be $x$.
+        $$
+            C(A|ch(A)=x) = x,\forall A,x.
+        $$
     - When we trust the relative frequency, we get
         $$
         P(A|rel.freq(A)=x) = x,\forall A,x,
@@ -83,6 +87,8 @@ When the theorem holds, the probability defined above is unique for the agent.
 <h2 style="text-align: center;">To be continued...💤</h2>
 
 ---
+
+2nd version on 2026-02-15
 
 1st version on 2026-02-09
         
