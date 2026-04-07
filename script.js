@@ -7,7 +7,7 @@ let selectedTags = new Set();
 const pages = {
     'aboutme': 'About Me',
     'projects': 'Projects',
-    // 'insights_and_ideas': 'Insights & Ideas',
+    'insights_and_ideas': 'Insights & Ideas',
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
