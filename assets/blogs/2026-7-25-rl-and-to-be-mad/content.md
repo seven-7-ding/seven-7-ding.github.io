@@ -1,4 +1,4 @@
-<!-- An Old Man with 'His' RL -->
+<!-- RL, and to be mad -->
 
 This blog comes after several wonderful discussions with Prof. Richard S. Sutton, together with the speech I gave at the end of Summer School 2026 in SII (which is one of the best manuscript I have ever written so far...).
 
