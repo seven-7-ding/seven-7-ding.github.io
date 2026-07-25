@@ -73,7 +73,7 @@ $$
 
 ### 3. how to build new benchmarks and metrics for continual learning research?
 
-We don't need a benchmark and some values to study continual learning. Just see it as an issue in the field of Natural Science. We want to understand how does an agent learn continually, and we just set the environment we care about, and then observe the outcomes.
+We don't necessarily need a benchmark and some specific values to study continual learning (which may lead to crazy competitions helpless for understanding intelligence). Just see it as an issue in the field of Natural Science. We want to understand how does an agent learn continually, and we just set the environment we care about, and then observe the outcomes.
 
 So the core issue here is to define the problem we really want to study, instead of making new "benchmarks" and "metrics".
 
